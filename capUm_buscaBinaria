@@ -1,0 +1,33 @@
+class BuscaBinaria():
+
+  def pesq_bin(self, lista, item):
+    # mantem o take de onde estamos na lista. o -1 serve pq a posição começa
+    # em 0. logo se tiver 5 itens a ultima posição é 4
+    baixo = 0
+    alto = len(lista) - 1
+
+    while baixo <= alto:
+      # checa o meio do array
+      meio = (baixo + alto) // 2
+      chute = lista[meio]
+      # se achar o item
+      if chute == item:
+        return meio
+      # se chute for mais alto
+      if chute > item:
+        alto = meio - 1
+      # se for mt baixo
+      else:
+        baixo = meio + 1
+
+    # se não for parte do array
+    return None
+  
+
+if __name__ == "__main__":
+  # inicializa a classe pra usar o metodo = pesq_bin
+  bs = BuscaBinaria()
+  my_list = [2, 4, 6, 8, 10]
+  
+  print(bs.pesq_bin(my_list, 10))
+  print(bs.pesq_bin(my_list, 11)) 
